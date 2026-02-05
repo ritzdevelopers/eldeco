@@ -209,7 +209,7 @@ const highlightsNext = document.getElementById('highlights-next');
 
 let highlightsIndex = 0;
 let visibleCount = 3;
-const gap = 24;
+let gap = 24;
 
 function getVisibleCount() {
   const containerWidth = highlightsSlider.offsetWidth;
@@ -220,8 +220,21 @@ function setHighlightsSlideWidth() {
   if (!highlightsSlider || !highlightsSlides.length) return;
 
   visibleCount = getVisibleCount();
-
+  
+  // Set gap based on screen size
   const containerWidth = highlightsSlider.offsetWidth;
+  if (containerWidth < 375) {
+    gap = 12; // 0.75rem
+  } else if (containerWidth < 640) {
+    gap = 16; // 1rem
+  } else if (containerWidth < 768) {
+    gap = 20; // 1.25rem
+  } else if (containerWidth < 1024) {
+    gap = 24; // 1.5rem
+  } else {
+    gap = 24; // 1.5rem
+  }
+
   const slideWidth = (containerWidth - (visibleCount - 1) * gap) / visibleCount;
 
   highlightsSlides.forEach((slide) => {
