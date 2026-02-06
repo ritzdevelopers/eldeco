@@ -97,7 +97,7 @@ html, body {
   
   #overview .order-1 > div:last-child > div:last-child {
     flex: 0 0 544px;
-    max-width: 544px;
+    max-width: 480px;
   }
 }
 
