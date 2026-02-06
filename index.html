@@ -188,7 +188,7 @@
             <div
                 class="relative z-10 w-full h-full min-h-screen flex flex-col justify-end pb-20 xs:pb-24 sm:pb-28 md:pb-16 lg:pb-20 px-3 xs:px-4 sm:px-5 md:px-8 lg:px-12 xl:px-16 pt-24 xs:pt-28 sm:pt-32 md:pt-36 2xl:mx-auto 2xl:pl-0 max-w-7xl">
                   <!-- QR Code & RERA Info (Top Right) -->
-           
+
                 <div class="max-w-2xl w-full">
                     <h1
                         class="font-montserrat text-white text-[24px] xs:text-[28px] sm:text-[40px] md:text-[48px] lg:text-[47px] font-bold leading-tight tracking-tight mb-2 xs:mb-3">
@@ -234,7 +234,7 @@
             </div>
 
             <!-- Enquire Now Button - Centered, full width on mobile -->
-            <button
+            <button onclick="openContactModal()"
                 class="w-[240px] xs:w-[260px] sm:w-[280px] flex justify-between items-center bg-gradient-to-r from-[#976431] to-[#b28254] px-4 xs:px-5 sm:px-6 py-3 xs:py-3.5 sm:py-4 rounded-tl-[4px] rounded-bl-[4px] cursor-pointer fixed right-0 bottom-0 z-20 hover:opacity-90 transition-opacity">
                 <span
                     class="text-white font-montserrat font-[700] text-[12px] xs:text-[13px] sm:text-[14px] md:text-[16px]">Enquiry
@@ -1021,7 +1021,7 @@
                             class="text-[#000000] text-lg xs:text-xl sm:text-2xl lg:text-xl xl:text-2xl font-bold font-montserrat mb-5 xs:mb-6 text-center lg:text-start w-full">
                             Request
                             a Call Back</h2>
-                        <form class="w-full max-w-full bg-white space-y-3.5 xs:space-y-4 sm:space-y-5">
+                        <form id="callback-form" class="w-full max-w-full bg-white space-y-3.5 xs:space-y-4 sm:space-y-5" onsubmit="handleFormSubmit(event)">
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 xs:gap-3.5 sm:gap-4">
                                 <div>
                                     <label for="callback-name" class="sr-only">Your Name</label>
@@ -1123,7 +1123,198 @@
 
     </main>
 
+    <!-- Contact Modal Popup -->
+    <div id="contactModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black bg-opacity-50 px-3 xs:px-4 sm:px-6">
+        <div class="relative w-full max-w-lg bg-white rounded-[10px] shadow-xl max-h-[90vh] overflow-y-auto">
+            <!-- Close Button -->
+            <button onclick="closeContactModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors z-10">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+
+            <!-- Modal Content -->
+            <div class="p-5 xs:p-6 sm:p-8">
+                <h2 class="text-[#000000] text-xl xs:text-2xl sm:text-2xl font-bold font-montserrat mb-5 xs:mb-6 text-center">
+                    Request a Call Back
+                </h2>
+                <form id="modal-contact-form" class="w-full space-y-4 xs:space-y-5" onsubmit="handleModalFormSubmit(event)">
+                    <div>
+                        <label for="modal-name" class="sr-only">Your Name</label>
+                        <input type="text" id="modal-name" name="name" placeholder="Your Name *" required
+                            class="w-full bg-[#F5F5F5] text-[#000000] placeholder:text-gray-600 rounded-[10px] px-3 xs:px-4 py-2.5 xs:py-3 sm:py-3.5 text-[13px] xs:text-[14px] sm:text-[15px] font-opensans border-none outline-none focus:ring-2 focus:ring-[#A27140]/30">
+                    </div>
+                    <div>
+                        <label for="modal-email" class="sr-only">Email</label>
+                        <input type="email" id="modal-email" name="email" placeholder="Email *" required
+                            class="w-full bg-[#F5F5F5] text-[#000000] placeholder:text-gray-600 rounded-[10px] px-3 xs:px-4 py-2.5 xs:py-3 sm:py-3.5 text-[13px] xs:text-[14px] sm:text-[15px] font-opensans border-none outline-none focus:ring-2 focus:ring-[#A27140]/30">
+                    </div>
+                    <div>
+                        <label for="modal-phone" class="sr-only">Phone No.</label>
+                        <input type="tel" id="modal-phone" name="phone" placeholder="Phone No. *" required
+                            class="w-full bg-[#F5F5F5] text-[#000000] placeholder:text-gray-600 rounded-[10px] px-3 xs:px-4 py-2.5 xs:py-3 sm:py-3.5 text-[13px] xs:text-[14px] sm:text-[15px] font-opensans border-none outline-none focus:ring-2 focus:ring-[#A27140]/30">
+                    </div>
+                    <div>
+                        <label for="modal-message" class="sr-only">Message</label>
+                        <textarea id="modal-message" name="message" placeholder="Message *" required rows="4"
+                            class="w-full bg-[#F5F5F5] text-[#000000] placeholder:text-gray-600 rounded-[10px] px-3 xs:px-4 py-2.5 xs:py-3 sm:py-3.5 text-[13px] xs:text-[14px] sm:text-[15px] font-opensans border-none outline-none focus:ring-2 focus:ring-[#A27140]/30 resize-none"></textarea>
+                    </div>
+                    <button type="submit" id="modal-submit-btn"
+                        class="btn-overview-solid w-full text-white font-opensans font-semibold text-[14px] xs:text-[15px] sm:text-[16px] px-5 xs:px-6 py-3 xs:py-3.5 sm:py-4 rounded-[5px] transition-all hover:opacity-95 shadow-sm">
+                        <span id="modal-submit-text">Get a Call Back</span>
+                        <span id="modal-submit-loading" class="hidden">Submitting...</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script>
+        // Google Sheets Script URL
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/a/macros/ritzmediaworld.com/s/AKfycbxQfo3z2oSU6WNkTJfqJQDsk7mQa7ZX-xPn5AZIaLhHXabRY4bUHi99ETeGtylw0Ka0/exec';
+        const SHEET_NAME = 'Google PPC'; // Change this to your actual sheet name
+
+        // Function to submit data to Google Sheets
+        async function submitToGoogleSheets(formData, formType = 'contact') {
+            try {
+                // Prepare data for Google Sheets
+                // The script expects field names matching your sheet headers
+                const data = {
+                    sheetName: SHEET_NAME,
+                    Name: formData.name || formData.get('name'),
+                    Email: formData.email || formData.get('email'),
+                    Phone: formData.phone || formData.get('phone'),
+                    Message: formData.message || formData.get('message')
+                };
+
+                // Create form data
+                const formDataToSend = new FormData();
+                Object.keys(data).forEach(key => {
+                    formDataToSend.append(key, data[key]);
+                });
+
+                // Submit to Google Sheets
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    body: formDataToSend
+                });
+
+                const result = await response.json();
+                
+                if (result.result === 'success') {
+                    return { success: true, message: 'Form submitted successfully!' };
+                } else {
+                    throw new Error(result.error?.message || 'Failed to submit form');
+                }
+            } catch (error) {
+                console.error('Error submitting to Google Sheets:', error);
+                return { success: false, message: error.message || 'Failed to submit form. Please try again.' };
+            }
+        }
+
+        // Handle contact form submission (main form)
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            try {
+                const formData = new FormData(form);
+                const result = await submitToGoogleSheets(formData, 'contact');
+
+                if (result.success) {
+                    // Store current URL in sessionStorage for redirect back
+                    sessionStorage.setItem('previousUrl', window.location.href);
+                    // Redirect to thank you page
+                    window.location.href = 'thankyou.html';
+                } else {
+                    alert('Error: ' + result.message);
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                }
+            } catch (error) {
+                alert('An error occurred. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        }
+
+        // Handle modal form submission
+        async function handleModalFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const submitBtn = document.getElementById('modal-submit-btn');
+            const submitText = document.getElementById('modal-submit-text');
+            const submitLoading = document.getElementById('modal-submit-loading');
+
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitText.classList.add('hidden');
+            submitLoading.classList.remove('hidden');
+
+            try {
+                const formData = new FormData(form);
+                const result = await submitToGoogleSheets(formData, 'modal');
+
+                if (result.success) {
+                    // Close modal
+                    closeContactModal();
+                    // Store current URL in sessionStorage for redirect back
+                    sessionStorage.setItem('previousUrl', window.location.href);
+                    // Redirect to thank you page
+                    window.location.href = 'thankyou.html';
+                } else {
+                    alert('Error: ' + result.message);
+                    submitBtn.disabled = false;
+                    submitText.classList.remove('hidden');
+                    submitLoading.classList.add('hidden');
+                }
+            } catch (error) {
+                alert('An error occurred. Please try again.');
+                submitBtn.disabled = false;
+                submitText.classList.remove('hidden');
+                submitLoading.classList.add('hidden');
+            }
+        }
+
+        // Open contact modal
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close contact modal
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+            // Reset form
+            document.getElementById('modal-contact-form').reset();
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('contactModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeContactModal();
+            }
+        });
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeContactModal();
+            }
+        });
+    </script>
 </body>
 
 </html>
