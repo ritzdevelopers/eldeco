@@ -46,13 +46,13 @@
 
     <!-- Desktop Header -->
     <nav id="navbar"
-        class="hidden lg:flex w-full fixed  top-0 z-50 justify-between items-center px-4 xl:px-6 py-2 lg:py-3 transition-all duration-300 bg-transparent">
+        class="hidden lg:flex w-full fixed  top-0 z-50 justify-between items-center px-4 xl:px-6 py-2 lg:py-5 transition-all duration-300 bg-transparent">
         <div class="w-full max-w-7xl mx-auto md:w-[668px] lg:w-full flex justify-between  items-center">
             <div class="flex items-center">
                 <a href="#" class="block"><img src="images/logo-01 1.png" alt="Eldeco"
                         class="h-[38px] lg:h-[38px] w-[213px] object-contain mt-2"></a>
             </div>
-            <div class="flex justify-between items-center gap-4 xl:gap-6 2xl:gap-3">
+            <div class="flex justify-between items-center gap-4 xl:gap-4 2xl:gap-3">
                 <ul class="flex justify-between gap-0.5 xl:gap-8 items-center">
                     <li><a href="#home"
                             class="nav-link block px-2 xl:px-3 py-2 text-[13px] xl:text-[14px] 2xl:text-[16px] font-[700] text-white hover:text-[#2ecc71] transition-colors font-opensans"
@@ -158,36 +158,37 @@
                 </div>
             </div>
 
-            <!-- QR Code & RERA Info (Top Right) -->
+          
             <div
-                class="rera-qr-container absolute top-16 xs:top-20 sm:top-[105px] right-2 xs:right-4 sm:right-6 md:right-8 lg:right-8 xl:right-8 z-20 flex flex-row items-start gap-1.5 xs:gap-2 sm:gap-3">
-                <div class="w-full max-w-full flex flex-col gap-0.5 xs:gap-1">
+            class="rera-qr-container absolute top-16 xs:top-20 sm:top-[105px] right-2 xs:right-4 sm:right-6 md:right-8 lg:right-8 xl:right-8 z-20 flex flex-row items-start gap-1.5 xs:gap-2 sm:gap-3">
+            <div class="w-full max-w-full flex flex-col gap-0.5 xs:gap-1 ">
+                <div
+                    class="rera-qr-text text-white font-opensans text-left rera-text-mobile flex flex-row gap-1.5 xs:gap-2 sm:gap-2 justify-end text-end">
+                    <p class="font-[600] text-[9px] xs:text-[10px] sm:text-[11px] leading-tight">UP RERA REG NO.:
+                        UPRERAPRJ106523/01/2026<br />WEBSITE:
+                        WWW.UP-RERA.IN<br />LAUNCH DATE: 28TH JANUARY, 2026</p>
                     <div
-                        class="rera-qr-text text-white font-opensans text-left rera-text-mobile flex flex-row gap-1.5 xs:gap-2 sm:gap-2 justify-end text-end">
-                        <p class="font-[600] text-[9px] xs:text-[10px] sm:text-[11px] leading-tight">UP RERA REG NO.:
-                            UPRERAPRJ106523/01/2026<br />WEBSITE:
-                            WWW.UP-RERA.IN<br />LAUNCH DATE: 28TH JANUARY, 2026</p>
-                        <div
-                            class="rera-qr-img-wrapper bg-white flex items-center justify-center h-[35px] w-[35px] xs:h-[38px] xs:w-[38px] sm:h-[43px] sm:w-[43px] shrink-0">
-                            <img src="images/Qr-code.jpg" alt="QR Code"
-                                class="rera-qr-img w-[28px] h-[28px] xs:w-[30px] xs:h-[30px] sm:w-[35px] sm:h-[35px]">
-                        </div>
-                    </div>
-
-                    <div
-                        class="rera-qr-text text-white font-opensans text-left rera-text-mobile flex flex-row gap-1.5 xs:gap-2 sm:gap-2 justify-end text-end">
-                        <p class="font-[600] text-[9px] xs:text-[10px] sm:text-[11px] leading-tight">ELDECO HOMES
-                            DEVELOPERS LTD-COLL A/C<br />
-                            FOR ELDECO 7 PEAKS RESIDENCES-ESC<br />
-                            HDFC BANK, BANK ACCOUNT NO.: 57500001893798<br />
-                            IFSC CODE: HDFC0002830</p>
+                        class="rera-qr-img-wrapper bg-white flex items-center justify-center h-[35px] w-[35px] xs:h-[38px] xs:w-[38px] sm:h-[43px] sm:w-[43px] shrink-0">
+                        <img src="images/Qr-code.jpg" alt="QR Code"
+                            class="rera-qr-img w-[28px] h-[28px] xs:w-[30px] xs:h-[30px] sm:w-[35px] sm:h-[35px]">
                     </div>
                 </div>
-            </div>
 
+                <div
+                    class="rera-qr-text text-white font-opensans text-left rera-text-mobile flex flex-row gap-1.5 xs:gap-2 sm:gap-2 justify-end text-end">
+                    <p class="font-[600] text-[9px] xs:text-[10px] sm:text-[11px] leading-tight">ELDECO HOMES
+                        DEVELOPERS LTD-COLL A/C<br />
+                        FOR ELDECO 7 PEAKS RESIDENCES-ESC<br />
+                        HDFC BANK, BANK ACCOUNT NO.: 57500001893798<br />
+                        IFSC CODE: HDFC0002830</p>
+                </div>
+            </div>
+        </div>
             <!-- Hero Content -->
             <div
                 class="relative z-10 w-full h-full min-h-screen flex flex-col justify-end pb-20 xs:pb-24 sm:pb-28 md:pb-16 lg:pb-20 px-3 xs:px-4 sm:px-5 md:px-8 lg:px-12 xl:px-16 pt-24 xs:pt-28 sm:pt-32 md:pt-36 2xl:mx-auto 2xl:pl-0 max-w-7xl">
+                  <!-- QR Code & RERA Info (Top Right) -->
+           
                 <div class="max-w-2xl w-full">
                     <h1
                         class="font-montserrat text-white text-[24px] xs:text-[28px] sm:text-[40px] md:text-[48px] lg:text-[47px] font-bold leading-tight tracking-tight mb-2 xs:mb-3">
