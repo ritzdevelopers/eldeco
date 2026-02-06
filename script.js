@@ -201,11 +201,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  // Highlights Slider - right button only, manual click, loop back to slide 1 from slide 3
+  // Highlights Slider - left and right buttons, manual click, loop back to slide 1 from slide 3
 const highlightsSlider = document.querySelector('.highlights-slider');
 const highlightsTrack = document.querySelector('.highlights-track');
 const highlightsSlides = document.querySelectorAll('.highlights-slide');
 const highlightsNext = document.getElementById('highlights-next');
+const highlightsPrev = document.getElementById('highlights-prev');
 
 let highlightsIndex = 0;
 let visibleCount = 3;
@@ -261,8 +262,24 @@ function nextHighlightsSlide() {
   updateHighlightsSlider();
 }
 
+function prevHighlightsSlide() {
+  const maxIndex = highlightsSlides.length - visibleCount;
+
+  if (highlightsIndex <= 0) {
+    highlightsIndex = maxIndex; // loop to end
+  } else {
+    highlightsIndex--;
+  }
+
+  updateHighlightsSlider();
+}
+
 if (highlightsNext) {
   highlightsNext.addEventListener('click', nextHighlightsSlide);
+}
+
+if (highlightsPrev) {
+  highlightsPrev.addEventListener('click', prevHighlightsSlide);
 }
 
 if (highlightsTrack && highlightsSlides.length) {
